@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+gem 'simple_form'
+gem 'haml-rails'
 gem 'paperclip'
 gem 'rails', '4.2.6'
 gem 'sqlite3'
