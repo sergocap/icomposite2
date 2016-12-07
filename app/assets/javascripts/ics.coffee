@@ -15,11 +15,13 @@
       reader = new FileReader()
       reader.onload = (e) ->
         url = e.target.result
+        preview.css('display', 'inline-block')
         preview.attr('src', url)
         canvas.attr('width', preview.width())
         canvas.attr('height', preview.height())
         canvas[0].style.backgroundImage = 'url(' + url + ')'
         draw_net(context)
+        preview.css('display', 'none')
       reader.readAsDataURL(file)
     else
       alert 'Выберите картинку'
@@ -40,3 +42,21 @@ set_line = (context, x1, y1, x2, y2) ->
   context.moveTo(x1, y1)
   context.lineTo(x2, y2)
   context.stroke()
+
+@init_table = ->
+  $(window).on 'resize', ->
+    adaptive_table()
+  adaptive_table()
+
+adaptive_table = () ->
+  ic = $('.ic.main')
+  table = $('.js-table')
+  table_width = table.width()
+  table_height_old = table.height()
+  rel = ic.width() / table_width
+  table_height_new = table_height_old * rel
+  table.css('transform', 'scale(' + rel + ',' + rel + ')')
+  table.css('margin-left', (ic.width() - table_width)/2.0 + 'px')
+  table.css('margin-top', (table_height_new - table_height_old)/2.0 + 'px')
+  ic.height(table_height_new + 'px')
+  table.css('visibility', 'visible')

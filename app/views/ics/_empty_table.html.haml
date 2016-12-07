@@ -1,0 +1,8 @@
+%table{ class: 'js-table', style: "background:url(#{ic.image.url})", cellspacing: 0, cellpadding: 0 }
+  - ic.count_places_y.times do |y|
+    %tr
+      - ic.count_places_x.times do |x|
+        %td
+          = link_to "/ics/#{ic.id}/places/new?x=#{x}&y=#{y}", remote: true, class: 'ajax-place_new' do
+            %div{ style: "height:#{ic.place_height}px;width:#{ic.place_width}px" }
+

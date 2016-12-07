@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'ics#show'
-  resources :ics
+  resources :ics do
+    resources :places
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

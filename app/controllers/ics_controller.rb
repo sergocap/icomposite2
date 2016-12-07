@@ -10,6 +10,7 @@ class IcsController < ApplicationController
 
   def create
     @ic = Ic.create ic_params
+    @ic.create_html
     redirect_to ic_path(@ic)
   end
 
