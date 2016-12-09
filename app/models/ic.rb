@@ -5,6 +5,26 @@ class Ic < ActiveRecord::Base
   has_attached_file :image, default_url: '/images/missing.png', :styles => { :small => "100x100^" }
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
+  def add_to_project(place)
+    ic_img = Magick::Image.read(image.path)[0]
+    pl_img = Magick::Image.read(place.image.path)[0]
+    pl_img.resize!(place_width, place_height, Magick::LanczosFilter, 1.0)
+    ic_img.composite!(pl_img, place_width * place.x, place_height * place.y, Magick::OverCompositeOp)
+    ic_img.write(image.path)
+    image.reprocess!
+    html_reprocess(place)
+  end
+
+  def html_reprocess(place)
+    doc = Nokogiri::HTML(html)
+    link = doc.css("table tr:nth-child(#{place.y + 1}) td:nth-child(#{place.x + 1}) a")[0]
+    link['class'] = 'ajax-place_show'
+    href = link['href']
+    new_href = href[0, href.index('new')] + place.id.to_s
+    link['href'] = new_href
+    update_attribute(:html, doc.to_html)
+  end
+
   def count_places_x
     (width / place_width).to_i
   end

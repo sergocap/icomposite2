@@ -16,9 +16,14 @@ class PlacesController < ApplicationController
       format.html {
         @place.update_attribute(:ic_id, @ic.id)
         @place.process_image
+        @ic.add_to_project(@place)
         redirect_to ic_path(@ic.id)
       }
     end
+  end
+
+  def show
+    show! { render partial: 'places/show' and return }
   end
 
   def find_ic
