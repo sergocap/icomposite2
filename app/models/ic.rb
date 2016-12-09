@@ -1,5 +1,6 @@
 class Ic < ActiveRecord::Base
-  has_many :places
+  has_many :places, dependent: :destroy
+  has_many :original_places, dependent: :destroy
 
   has_attached_file :image, default_url: '/images/missing.png', :styles => { :small => "100x100^" }
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]

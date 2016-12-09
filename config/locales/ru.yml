@@ -1,0 +1,21 @@
+ru:
+  activerecord:
+    attributes:
+      place:
+        comment: Комментарий
+        link:    Ссылка
+
+      ic:
+        title: Название
+        place_width: Ширина ячейки
+        place_height: Высота ячейки
+
+  helpers:
+    submit:
+      update: Сохранить
+      create: Создать
+      sign_in: Войти
+      sign_up: Зарегистрироваться
+
+
+

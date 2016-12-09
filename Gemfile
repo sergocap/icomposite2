@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+gem 'jcrop-rails-v2'
+gem 'inherited_resources'
+gem 'fastimage'
+gem 'enumerize'
+gem 'bootstrap-sass'
 gem 'rmagick'
 gem 'simple_form'
 gem 'haml-rails'

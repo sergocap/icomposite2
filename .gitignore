@@ -16,8 +16,5 @@
 !/log/.keep
 /tmp
 
-/public/*.jpg
-/public/*.png
-/public/*.jpeg
-/public/*/ics/*
+public/system/
 

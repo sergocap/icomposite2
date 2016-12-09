@@ -1,24 +1,19 @@
 class IcsController < ApplicationController
-  before_action :find_ic
+  inherit_resources
+  actions :all, :except => [ :show  ]
+
   def show
     @ics = Ic.all
-  end
-
-  def new
-    @ic = Ic.new
-  end
-
-  def create
-    @ic = Ic.create ic_params
-    @ic.create_html
-    redirect_to ic_path(@ic)
-  end
-
-  def find_ic
     @ic = params[:id] ? Ic.find(params[:id]) : Ic.last
   end
 
-  def ic_params
-    params.require(:ic).permit(:title, :place_height, :place_width, :image)
+  def create
+    create! do |format|
+      format.html { @ic.create_html; redirect_to root_path }
+    end
+  end
+
+  def permitted_params
+    params.permit(:ic => [:title, :image, :place_height, :place_width])
   end
 end

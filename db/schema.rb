@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207123701) do
+ActiveRecord::Schema.define(version: 20161208051308) do
 
   create_table "ics", force: :cascade do |t|
     t.string   "title"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20161207123701) do
     t.text     "html"
   end
 
+  create_table "original_places", force: :cascade do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "ic_id"
+    t.integer  "x"
+    t.integer  "y"
+  end
+
   create_table "places", force: :cascade do |t|
     t.integer  "x"
     t.integer  "y"
@@ -36,6 +46,8 @@ ActiveRecord::Schema.define(version: 20161207123701) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "ic_id"
+    t.string   "comment"
+    t.string   "link"
   end
 
 end

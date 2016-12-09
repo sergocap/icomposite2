@@ -1,9 +1,9 @@
 .ics
   - @ics.each do |ic|
     - if ic.id != @ic.id
-      = link_to (image_tag ic.image.url(:small), height: 100, class: 'opacity'), ic_path(ic)
+      %span>= link_to (image_tag ic.image.url(:small), height: 70, class: 'opacity'), ic_path(ic)
     - else
-      = image_tag ic.image.url(:small), height: 100
+      %span>= image_tag ic.image.url(:small), height: 70
 
 .ic.main
   = @ic.html.html_safe

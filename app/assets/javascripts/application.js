@@ -12,4 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
+//= require jquery.Jcrop.min
+//= require jquery.minicolors.min
+//= require jquery.centring
 //= require_tree .

@@ -1,10 +1,10 @@
 @init_image_upload_net = ->
-  $('.image_upload_button').on 'click', ->
+  $('.image_upload_button_net').on 'click', ->
     $('.js-image_upload_net').click()
 
   canvas = $('.js-canvas_net')
   context = canvas[0].getContext('2d')
-  preview = $('.image_upload_preview')
+  preview = $('.image_upload_preview_net')
 
   $('.set_place_size').on 'click', ->
     draw_net(context)
