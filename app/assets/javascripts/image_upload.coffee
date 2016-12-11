@@ -42,6 +42,7 @@ init_crop = (preview) ->
     aspectRatio: ratioW / ratioH
     onChange: showCoords
     onSelect: showCoords
+    minSize: [100, 0]
     setSelect: [0, 0, ratioW * 10, ratioH * 10]
 
   $('.jcrop-holder').children().first().children().first().children().first().css('visibility', 'hidden')
@@ -70,9 +71,8 @@ init_svg = (preview) ->
   svg_image = $('.svg_place_image')
   $(svg_image).attr('xlink:href', preview.attr('src'))
   set_rgb hexToRgb("333333")
-  init_mini_color()
 
-init_mini_color = ->
+@init_mini_color = ->
   $('.mini_colors_input').minicolors
     inline: true
     change: (hex) ->

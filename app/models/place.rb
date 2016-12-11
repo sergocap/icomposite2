@@ -28,23 +28,22 @@ class Place < ActiveRecord::Base
   def svg_save
     unless r_component == '1' && g_component == '1' && b_component == '1'
       svg_string = "
-          <svg height='#{height}' width='#{width}'>
-            <defs>
-                  <filter id='fp1'>
-                    <feComponentTransfer>
-                      <feFuncR slope='#{r_component}' type='linear'></feFuncR>
-                      <feFuncG slope='#{g_component}' type='linear'></feFuncG>
-                      <feFuncB slope='#{b_component}' type='linear'></feFuncB>
-                      <feFuncA type='identity'></feFuncA>
-                    </feComponentTransfer>
-                  </filter>
-            </defs>
-            <image filter='url(#fp1)' height='100%' width='100%' xlink:href='#{image.path}'></image>
-          </svg>"
-
-      file = File.new('svg_temp.svg', 'w+')
+            <svg height='#{height}' width='#{width}'>
+              <defs>
+                <filter id='fp1'>
+                  <feComponentTransfer>
+                    <feFuncR slope='#{r_component}' type='linear'></feFuncR>
+                    <feFuncG slope='#{g_component}' type='linear'></feFuncG>
+                    <feFuncB slope='#{b_component}' type='linear'></feFuncB>
+                    <feFuncA type='identity'></feFuncA>
+                  </feComponentTransfer>
+                </filter>
+              </defs>
+              <image filter='url(#fp1)' height='100%' width='100%' xlink:href='#{image.path}'></image>
+            </svg>"
+      file = File.new('svg_temp.svg', 'w')
       File.write(file, svg_string)
-      system("convert #{file.path} #{image.path}")
+      system("convert '#{file.path}' '#{image.path}'")
       file.close
       File.delete(file)
     end

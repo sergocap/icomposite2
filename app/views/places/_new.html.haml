@@ -14,19 +14,6 @@
     .display_none
       = f.input :image, input_html: { :class => 'js-image_input' }
 
-    .mini_previews
-      = image_tag @original_place.image.url
-      .svg_preview_wrapper{ style: "width: #{@ic.place_width}px; height: #{@ic.place_height}px;" }
-        %svg{ class: 'filterPlaceSmall', :width => @ic.place_width, :height => @ic.place_height }
-          %defs
-            %filter{ id: 'fp1' }
-              %feComponentTransfer
-                %feFuncR{ class: 'filter_r', type: 'linear', slope: '1' }
-                %feFuncG{ class: 'filter_g', type: 'linear', slope: '1' }
-                %feFuncB{ class: 'filter_b', type: 'linear', slope: '1' }
-                %feFuncA{ type: 'identity' }
-
-          %image{ :height => '100%', :width => '100%', 'xlink:href' => '', class: 'svg_place_image small', filter: 'url(#fp1)' }
 
     .js-image_wrapper
       = image_tag @place.image.url, class: 'js-image_preview', data: { ratioW: @ic.place_width, ratioH: @ic.place_height }
@@ -41,7 +28,9 @@
               %feFuncA{ type: 'identity' }
         %image{ :height => '100%', :width => '100%', 'xlink:href' => '', class: 'svg_place_image', filter: 'url(#fp1)' }
 
-    .mini_colors_input
+    .mini_colors_wrapper
+      .mini_colors_input
+      = render partial: 'mini_previews'
 
     .actions
       %button{ :type => 'button', :class => 'js-image_upload_button btn btn-default' }= 'Выбрать изображение'

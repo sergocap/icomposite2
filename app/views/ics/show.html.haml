@@ -4,6 +4,6 @@
       %span>= link_to (image_tag ic.image.url(:small), height: 70, class: 'opacity'), ic_path(ic)
     - else
       %span>= image_tag ic.image.url(:small), height: 70
-
-.ic.main
-  = @ic.html.html_safe
+- unless @ic.nil?
+  .ic.main
+    = @ic.html.html_safe
