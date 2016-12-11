@@ -14,7 +14,6 @@
     .display_none
       = f.input :image, input_html: { :class => 'js-image_input' }
 
-
     .js-image_wrapper
       = image_tag @place.image.url, class: 'js-image_preview', data: { ratioW: @ic.place_width, ratioH: @ic.place_height }
 
