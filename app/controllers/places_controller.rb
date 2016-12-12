@@ -12,13 +12,14 @@ class PlacesController < ApplicationController
   end
 
   def create
-    create! do |format|
-      format.html {
+    create! do |success, failure|
+      success.html {
         @place.update_attribute(:ic_id, @ic.id)
         @place.process_image
         @ic.add_to_project(@place)
         redirect_to ic_path(@ic.id)
       }
+      failure.html { redirect_to ic_path(@ic.id) }
     end
   end
 
