@@ -6,7 +6,6 @@
     myModal = new jBox('Modal', onClose: destroy_jBox, content: data)
     myModal.open()
     init_mini_color()
-    $('.jBox-wrapper.jBox-Modal').center()
 
 destroy_jBox = () ->
   $('.jBox-wrapper.jBox-Modal.jBox-Default').remove()

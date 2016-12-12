@@ -7,7 +7,6 @@
   $('.ajax-place_show').on 'ajax:success', (e, data) ->
     myModal = new jBox('Modal', onClose: destroy_jBox, content: data)
     myModal.open()
-    $('.jBox-wrapper.jBox-Modal').center()
 
     id = $(this).data('id')
     next_id = get_next_id id
@@ -28,7 +27,6 @@
         myModal.setContent(data)
         $('.place.show td.link.right').attr('data-target_id', next_id)
         $('.place.show td.link.left').attr('data-target_id', previous_id)
-        $('.jBox-wrapper.jBox-Modal').center()
 
 get_next_id = (id) ->
   if id == $('.ajax-place_show').length - 1

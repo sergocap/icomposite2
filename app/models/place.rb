@@ -45,7 +45,7 @@ class Place < ActiveRecord::Base
       File.write(file, svg_string)
       tfile = File.new(File.basename(image.path, ".*") + '.png', 'w')
 
-      system("inkscape -z -e #{tfile.path}  #{file.path}")
+      system("inkscape -z -e '#{tfile.path}' '#{file.path}'")
       self.image = tfile
       self.save
 

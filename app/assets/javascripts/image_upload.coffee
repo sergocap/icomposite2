@@ -12,7 +12,6 @@
         preview.attr('src', url)
         init_crop(preview) if $('.place.new').length
         init_svg(preview) if $('.place.new').length
-        $('.jBox-wrapper.jBox-Modal').center()
       reader.readAsDataURL(file)
     else
       alert 'Выберите картинку'
