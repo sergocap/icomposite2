@@ -6,4 +6,4 @@
       %span>= image_tag ic.image.url(:small), height: 70
 - unless @ic.nil?
   .ic.main
-    = @ic.html.html_safe
+    = @ic.get_html.html_safe

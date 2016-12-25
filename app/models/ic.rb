@@ -1,4 +1,6 @@
 class Ic < ActiveRecord::Base
+  require 'zlib'
+  include Zlib
   has_many :places, dependent: :destroy
   has_many :original_places, dependent: :destroy
 
@@ -16,13 +18,14 @@ class Ic < ActiveRecord::Base
   end
 
   def html_reprocess(place)
+    html = get_html
     doc = Nokogiri::HTML(html)
     link = doc.css("table tr:nth-child(#{place.y + 1}) td:nth-child(#{place.x + 1}) a")[0]
     link['class'] = 'ajax-place_show'
     href = link['href']
     new_href = href[0, href.index('new')] + place.id.to_s
     link['href'] = new_href
-    update_attribute(:html, doc.to_html)
+    update_html(doc.to_html)
   end
 
   def count_places_x
@@ -40,10 +43,19 @@ class Ic < ActiveRecord::Base
       partial: 'ics/empty_table',
       layout: false,
       locals: { :ic => self })
-    update_attribute(:html, html_string)
+    update_html(html_string)
+  end
+
+  def get_html
+    Inflate.inflate(read_attribute(:html))
   end
 
   private
+  def update_html(html)
+    zip_html = Deflate.deflate(html)
+    update_attribute(:html, zip_html.force_encoding('UTF-8'))
+  end
+
   def crop_image
     img = Magick::Image.read(image.path)[0]
     h = (img.rows/place_height).to_i * place_height
