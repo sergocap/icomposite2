@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { :omniauth_callbacks => 'users' }
   root 'ics#show'
   resources :ics do
     resources :places

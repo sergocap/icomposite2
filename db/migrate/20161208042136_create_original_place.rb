@@ -6,5 +6,7 @@ class CreateOriginalPlace < ActiveRecord::Migration
       t.integer    :x
       t.integer    :y
     end
+    add_index :original_places, :x
+    add_index :original_places, :y
   end
 end

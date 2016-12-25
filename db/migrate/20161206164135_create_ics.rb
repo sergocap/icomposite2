@@ -2,6 +2,7 @@ class CreateIcs < ActiveRecord::Migration
   def change
     create_table :ics do |t|
       t.string  :title
+      t.text    :html
       t.integer :height
       t.integer :width
       t.integer :place_height

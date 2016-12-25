@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'omniauth'
+gem 'omniauth-vkontakte'
+gem 'devise'
 gem 'jcrop-rails-v2'
 gem 'inherited_resources'
 gem 'fastimage'
