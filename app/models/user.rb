@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
          :rememberable, :omniauthable
   has_attached_file :avatar, default_url: '/images/missing.png', :styles => { :small => "65x64^" }, :convert_options => { :small => "-gravity center -extent 64x64" }
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"], :message => 'Формат файла должен быть jpg/jpeg/png/gif. '
+  has_many :places
+
+  def admin?() role == 'admin' end
 
   def self.find_for_vkontakte_oauth access_token
     if user = User.where(:url => access_token.info.urls.Vkontakte).first

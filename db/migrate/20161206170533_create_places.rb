@@ -7,6 +7,7 @@ class CreatePlaces < ActiveRecord::Migration
       t.string  :link
       t.attachment :image
       t.belongs_to :ic
+      t.belongs_to :user
     end
     add_index :places, :x
     add_index :places, :y

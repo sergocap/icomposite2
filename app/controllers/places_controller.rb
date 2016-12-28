@@ -15,6 +15,7 @@ class PlacesController < ApplicationController
     create! do |success, failure|
       success.html {
         @place.update_attribute(:ic_id, @ic.id)
+        @place.update_attribute(:user_id, current_user.id) if user_signed_in?
         @place.process_image
         @ic.add_to_project(@place)
         redirect_to ic_path(@ic.id)

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'cancan'
 gem 'omniauth'
 gem 'omniauth-vkontakte'
 gem 'devise'

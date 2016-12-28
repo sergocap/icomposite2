@@ -1,5 +1,6 @@
 class IcsController < ApplicationController
   inherit_resources
+  authorize_resource
   actions :all, :except => [ :show  ]
 
   def show

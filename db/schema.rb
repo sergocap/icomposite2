@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20161225153101) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "ic_id"
+    t.integer  "user_id"
   end
 
   add_index "places", ["x"], name: "index_places_on_x"
