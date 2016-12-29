@@ -1,7 +1,18 @@
-- if user_signed_in?
-  = image_tag current_user.avatar.url(:small), size: '64x64' if current_user.avatar.path
-  = link_to 'Выйти', destroy_user_session_path, :method => :delete
-- else
-  = link_to 'Войти с помощью VK', user_vkontakte_omniauth_authorize_path
-  = link_to 'Войти', new_user_session_path
-  = link_to 'Зарегистрироваться', new_user_registration_path
+.header
+  .authorize.with_shadow.display_none
+    - if user_signed_in?
+      = image_tag current_user.avatar.url(:small), size: '64x64' if current_user.avatar.path
+      = link_to 'Выйти', destroy_user_session_path, :method => :delete
+    - else
+      = link_to 'Войти с помощью VK', user_vkontakte_omniauth_authorize_path
+      = link_to 'Войти', new_user_session_path
+      = link_to 'Зарегистрироваться', new_user_registration_path
+  = link_to root_path do
+    .logo_wrapper
+      .logotype.platform
+  .citation.platform
+    = "<i>&#8220;В этом неведении собственного существа ты подобен листу на дереве, который осенью увядая и опадая, сетует на свою гибель</i>".html_safe
+    = "<i>и не хочет искать утешения в надежде на свежую зелень, которая весной оденет дерево.&#8222;</i>".html_safe
+    %br
+    %span
+      = "Arthur Schopenhauer."
