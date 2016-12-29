@@ -7,6 +7,9 @@
 @import "jquery.Jcrop.min"
 @import "jquery.minicolors"
 
+body
+  background: url('main_back.jpg')
+
 .display_none
   display: none
 
@@ -18,25 +21,15 @@
   background: url('back.jpg')
 
   .authorize
-
     img
       height: 35px
       width: 35px
       border-radius: 7px
 
-    background: crimson
-    float: right
-    padding: 7px 10px
+    span.user_name
+      margin-right: 5px
     margin-top: 22px
 
-    a
-      color: #ece4e4
-      margin: 0 5px
-      text-decoration: none
-
-      &:hover
-        color: white
-        text-decoration: none
 
   .logo_wrapper
     float: left
@@ -48,6 +41,7 @@
       width: 185px
       background-repeat: no-repeat
       background-size: contain
+      border-radius: 10px
 
   .citation
     float: left
@@ -61,9 +55,30 @@
       float: right
 
 .platform
-  border-radius: 10px
+  border-radius: 3px
   background-color: rgba(255, 255, 255, 0.8)
   &:hover
     background-color: rgba(255, 255, 255, 0.9)
+
+.float_left
+  float: left
+
+.float_right
+  float: right
+
+.crimson_style
+  background: crimson
+  padding: 7px 10px
+
+  color: azure
+
+  a
+    color: #ece4e4
+    margin: 0 5px
+    text-decoration: none
+
+    &:hover
+      color: white
+      text-decoration: none
 
 

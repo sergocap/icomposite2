@@ -5,5 +5,7 @@
     - else
       %span>= image_tag ic.image.url(:small), height: 70
 - unless @ic.nil?
-  .ic.main
+  .ic_title.crimson_style.with_shadow.float_left
+    %h3= @ic.title
+  .ic_main.with_shadow
     = @ic.get_html.html_safe

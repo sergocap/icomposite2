@@ -49,7 +49,7 @@ set_line = (context, x1, y1, x2, y2) ->
   adaptive_table()
 
 adaptive_table = () ->
-  ic = $('.ic.main')
+  ic = $('.ic_main')
   table = $('.js-table')
   table_width = table.width()
   table_height_old = table.height()
