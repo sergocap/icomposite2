@@ -1,4 +1,6 @@
 class Ic < ActiveRecord::Base
+  require 'zlib'
+  include Zlib
   has_many :places, dependent: :destroy
   has_many :original_places, dependent: :destroy
 
@@ -45,12 +47,12 @@ class Ic < ActiveRecord::Base
   end
 
   def get_html
-    Zlib::Inflate.inflate(read_attribute(:html))
+    Inflate.inflate(read_attribute(:html))
   end
 
   private
   def update_html(html)
-    zip_html = Zlib::Deflate.deflate(html)
+    zip_html = Deflate.deflate(html)
     update_attribute(:html, zip_html.force_encoding('UTF-8'))
   end
 

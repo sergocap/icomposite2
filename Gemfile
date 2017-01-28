@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'rubysl-zlib', '~> 2.0', '>= 2.0.1'
 gem 'cancan'
 gem 'omniauth'
 gem 'omniauth-vkontakte'
