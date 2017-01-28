@@ -20,9 +20,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'sqlite3'
 
 group :development do
+  gem 'sqlite3'
   gem 'awesome_print'
   gem 'web-console', '~> 2.0'
   gem 'spring'
@@ -30,6 +30,7 @@ end
 
 group :production do
   gem 'rails_12factor', group: :production
+  gem 'pg'
 end
 
 ruby '2.3.0'
