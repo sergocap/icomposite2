@@ -1,17 +1,16 @@
-
 .ics
-
   - @ics.each do |ic|
     - if ic.id != @ic.id
       %span>= link_to (image_tag ic.image.url(:small), height: 60, class: 'opacity'), ic_path(ic)
     - else
       %span>= image_tag ic.image.url(:small), height: 60
 
-.ic_header
-  = link_to root_path do
-    .logo_wrapper
-      .logotype
-  %h2= @ic.title
+- unless @ic.nil?
+  .ic_header
+    = link_to root_path do
+      .logo_wrapper
+        .logotype
+    %h2= @ic.title
 
-.ic_main
-  = @ic.get_html.html_safe
+  .ic_main
+    = @ic.get_html.html_safe
