@@ -14,26 +14,30 @@
     .display_none
       = f.input :image, input_html: { :class => 'js-image_input' }
 
-    .js-image_wrapper
-      = image_tag @place.image.url, class: 'js-image_preview', data: { ratioW: @ic.place_width, ratioH: @ic.place_height }
+    %table
+      %tr
+        %td.t1
+          .js-image_wrapper
+            = image_tag @place.image.url, class: 'js-image_preview', data: { ratioW: @ic.place_width, ratioH: @ic.place_height }
 
-      %svg{ class: 'filterPlace', :height => '0', :width => '0' }
-        %defs
-          %filter{ id: 'fp1' }
-            %feComponentTransfer
-              %feFuncR{ class: 'filter_r', type: 'linear', slope: '1' }
-              %feFuncG{ class: 'filter_g', type: 'linear', slope: '1' }
-              %feFuncB{ class: 'filter_b', type: 'linear', slope: '1' }
-              %feFuncA{ type: 'identity' }
-        %image{ :height => '100%', :width => '100%', 'xlink:href' => '', class: 'svg_place_image', filter: 'url(#fp1)' }
+            %svg{ class: 'filterPlace', :height => '0', :width => '0' }
+              %defs
+                %filter{ id: 'fp1' }
+                  %feComponentTransfer
+                    %feFuncR{ class: 'filter_r', type: 'linear', slope: '1' }
+                    %feFuncG{ class: 'filter_g', type: 'linear', slope: '1' }
+                    %feFuncB{ class: 'filter_b', type: 'linear', slope: '1' }
+                    %feFuncA{ type: 'identity' }
+              %image{ :height => '100%', :width => '100%', 'xlink:href' => '', class: 'svg_place_image', filter: 'url(#fp1)' }
+          %button{ :type => 'button', :class => 'js-image_upload_button btn btn-default' }= 'Выбрать изображение'
 
-    .mini_colors_wrapper
-      .mini_colors_input
-      = render partial: 'mini_previews'
 
-    .actions
-      %button{ :type => 'button', :class => 'js-image_upload_button btn btn-default' }= 'Выбрать изображение'
-      = f.input :comment, label: false, placeholder: 'Некий текст (60 символов)', :input_html => {:maxlength => 60, :size => 60, class: 'form-control' }
-      = f.input :link,    label: false, placeholder: 'Ссылка', :input_html => { class: 'form-control' }
+        %td.t2
+          .mini_colors_wrapper
+            = render partial: 'mini_previews'
+            .mini_colors_input
 
-    = f.button :submit, class: 'btn-success'
+          .actions
+            = f.input :comment, as: :text, label: false, placeholder: 'Некий текст (60 символов)', :input_html => {:maxlength => 60, rows: 4, :size => 60, class: 'form-control' }
+            = f.input :link,    label: false, placeholder: 'Ссылка', :input_html => { class: 'form-control' }
+            = f.button :submit, class: 'btn-success'

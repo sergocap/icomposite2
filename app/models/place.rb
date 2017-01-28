@@ -1,7 +1,7 @@
 class Place < ActiveRecord::Base
   belongs_to :ic
   belongs_to :user
-  has_attached_file :image, default_url: '/images/missing.png'
+  has_attached_file :image, default_url: '/images/missing.jpg'
   validates :image, attachment_presence: true
   validates_attachment_content_type :image,
     :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]

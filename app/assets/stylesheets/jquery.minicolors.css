@@ -44,7 +44,6 @@
     position: absolute;
     width: 173px;
     height: 152px;
-    background: white;
     border: solid 1px #CCC;
     box-shadow: 0 0 20px rgba(0, 0, 0, .2);
     z-index: 99999;
@@ -89,6 +88,7 @@
     height: 150px;
     background-position: -120px 0;
     cursor: crosshair;
+    border-radius: 5px
 }
 
 .minicolors .minicolors-grid-inner {

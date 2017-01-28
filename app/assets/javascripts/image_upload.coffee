@@ -10,8 +10,12 @@
         url = e.target.result
         preview = $('.js-image_preview')
         preview.attr('src', url)
+
         init_crop(preview) if $('.place.new').length
         init_svg(preview) if $('.place.new').length
+        $('.jBox-content').css('display', 'block') if $(preview).height() > 400
+        $('.jBox-content').css('display', 'table-cell') if $(preview).height() <= 400
+        $('.jBox-content').css('vertical-align', 'middle') if $(preview).height() <= 400
       reader.readAsDataURL(file)
     else
       alert 'Выберите картинку'

@@ -1,5 +1,26 @@
 .place.new
+
+  table
+    margin: 0px auto
+    td
+      padding-left: 10px
+      padding-right: 10px
+
+    .t1
+      button
+        margin-top: 10px
+
+    .t2
+      vertical-align: top
+      background: #e9ecff
+      border-radius: 5px
+      padding: 10px
+      .btn-success
+        width: 100%
+
   .mini_previews
+    margin-top: 5px
+    margin-left: 5px
     img
       vertical-align: top
     .svg_preview_wrapper
@@ -9,27 +30,26 @@
 
   .actions
     input
-      height: 30px
       margin: 5px 0
+
+    textarea
+      font-size: 15px
 
   .js-image_wrapper
     position: relative
-    display: inline-block
 
     .filterPlace
       position: absolute
       top: 0
       left: 0
 
-    .js-image_preview
-      max-height: 350px
-      margin: 5px
+    img
+      width: 100%
+
 
   .mini_colors_wrapper
     .minicolors-panel
       border: none
-    float: right
-    margin-left: 5px
 
 .place.show
   height: 100%
