@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20161225153101) do
 
   create_table "ics", force: :cascade do |t|
     t.string   "title"
-    t.text     "html"
+    t.binary   "html"
     t.integer  "height"
     t.integer  "width"
     t.integer  "place_height"
