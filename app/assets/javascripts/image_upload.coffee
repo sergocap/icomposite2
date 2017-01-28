@@ -16,6 +16,7 @@
         $('.jBox-content').css('display', 'block') if $(preview).height() > 400
         $('.jBox-content').css('display', 'table-cell') if $(preview).height() <= 400
         $('.jBox-content').css('vertical-align', 'middle') if $(preview).height() <= 400
+
       reader.readAsDataURL(file)
     else
       alert 'Выберите картинку'

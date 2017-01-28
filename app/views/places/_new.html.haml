@@ -29,10 +29,10 @@
                     %feFuncB{ class: 'filter_b', type: 'linear', slope: '1' }
                     %feFuncA{ type: 'identity' }
               %image{ :height => '100%', :width => '100%', 'xlink:href' => '', class: 'svg_place_image', filter: 'url(#fp1)' }
-          %button{ :type => 'button', :class => 'js-image_upload_button btn btn-default' }= 'Выбрать изображение'
 
 
         %td.t2
+          %button{ :type => 'button', :class => 'js-image_upload_button btn btn-default' }= 'Выбрать изображение'
           .mini_colors_wrapper
             = render partial: 'mini_previews'
             .mini_colors_input

@@ -1,17 +1,27 @@
+.ics
+  - @ics.each do |ic|
+    %span>= link_to (image_tag ic.image.url(:small), height: 60, class: 'opacity'), ic_path(ic)
+
+.ic_header
+  = link_to root_path do
+    .logo_wrapper
+      .logotype
+  %h2 Новый ЯК
+
 .ic.new
   = simple_form_for @ic do |f|
-    = f.input :title
-    = f.input :place_height, input_html: { value: 20 }
-    = f.input :place_width, input_html: { value: 24 }
+    = f.input :title, input_html: { class: 'form-control' }
+    = f.input :place_height, input_html: { value: 20, class: 'form-control'}
+    = f.input :place_width, input_html: { value: 24, class: 'form-control' }
     %div
-      %button{ type: 'button', class: 'set_place_size' }= 'Применить размер'
+      %button{ type: 'button', class: 'set_place_size btn btn-default' }= 'Применить размер'
 
-    %button{ type: 'button', class: 'image_upload_button_net' }= 'Выбрать изображение'
     .display_none
       = f.input :image, input_html: { class: 'js-image_upload_net' }
     .preview_net
       = image_tag @ic.image.url, class: 'image_upload_preview_net'
       %canvas{ height: 0, width: 0, class: 'js-canvas_net'}
 
+    %button{ type: 'button', class: 'image_upload_button_net btn btn-default' }= 'Выбрать изображение'
 
-    = f.button :submit
+    = f.button :submit, class: 'btn-success'

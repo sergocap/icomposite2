@@ -1,10 +1,10 @@
 class IcsController < ApplicationController
   inherit_resources
   authorize_resource
+  before_filter :get_ics
   actions :all, :except => [ :show  ]
 
   def show
-    @ics = Ic.all
     @ic = params[:id] ? Ic.find(params[:id]) : Ic.last
   end
 
@@ -16,5 +16,9 @@ class IcsController < ApplicationController
 
   def permitted_params
     params.permit(:ic => [:title, :image, :place_height, :place_width])
+  end
+
+  def get_ics
+    @ics = Ic.all
   end
 end
