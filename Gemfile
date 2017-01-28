@@ -30,7 +30,7 @@ end
 
 group :production do
   gem 'rails_12factor', group: :production
-  gem 'pg', '0.17.1', group: :production
+  gem 'pg', '~> 0.9.0', group: :production
 end
 
 ruby '2.3.0'
