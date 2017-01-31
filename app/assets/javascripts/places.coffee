@@ -5,8 +5,6 @@
   $('.ajax-place_new').on 'ajax:success', (e, data) ->
     myModal = new jBox('Modal', width: '900px', height: '500px', onClose: destroy_jBox, content: data)
     myModal.open()
-    $('.jBox-content').css('display', 'table-cell')
-    $('.jBox-content').css('vertical-align', 'middle')
 
     init_mini_color()
 

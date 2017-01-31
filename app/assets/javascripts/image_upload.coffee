@@ -13,18 +13,14 @@
 
         init_crop(preview) if $('.place.new').length
         init_svg(preview) if $('.place.new').length
-        $('.jBox-content').css('display', 'block') if $(preview).height() > 400
-        $('.jBox-content').css('display', 'table-cell') if $(preview).height() <= 400
-        $('.jBox-content').css('vertical-align', 'middle') if $(preview).height() <= 400
 
       reader.readAsDataURL(file)
     else
       alert 'Выберите картинку'
 
-jcrop_handler = null
 init_crop = (preview) ->
 
-  preview.css({'height': '', 'width': '' })
+  preview.css({'width': '', 'height': ''})
   if $('.jcrop-holder').length
     JcropAPI = preview.data('Jcrop');
     JcropAPI.destroy();
@@ -32,8 +28,8 @@ init_crop = (preview) ->
   ratioW = preview.data().ratiow
   ratioH = preview.data().ratioh
 
-  $('#place_pre_width').val(preview.width())
-  $('#place_pre_height').val(preview.height())
+  $('#place_pre_width').val($(preview).width())
+  $('#place_pre_height').val($(preview).height())
 
   showCoords = (c) ->
     set_crop_preview(c)
@@ -46,7 +42,8 @@ init_crop = (preview) ->
     aspectRatio: ratioW / ratioH
     onChange: showCoords
     onSelect: showCoords
-    minSize: [100, 0]
+    allowSelect: false
+    minSize: [120, 0]
     setSelect: [0, 0, ratioW * 10, ratioH * 10]
 
   $('.jcrop-holder').children().first().children().first().children().first().css('visibility', 'hidden')
@@ -54,7 +51,7 @@ init_crop = (preview) ->
 set_crop_preview = (c) ->
   preview_wrapper = $('.svg_preview_wrapper')
   preview_img = $('.filterPlaceSmall')
-  cropping_image = $('.js-image_wrapper')
+  cropping_image = $('.js-image_preview')
   k = preview_wrapper.width() / c.w
   w2 = cropping_image.width() * k
   h2 = cropping_image.height() * k

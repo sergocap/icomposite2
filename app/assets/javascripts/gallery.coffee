@@ -5,7 +5,7 @@
 @init_ajax_place_show = ->
   myModal = null
   $('.ajax-place_show').on 'ajax:success', (e, data) ->
-    myModal = new jBox('Modal', width: '291px', height: '200px', onClose: destroy_jBox, content: data)
+    myModal = new jBox('Modal', width: '291px', height: '180px', onClose: destroy_jBox, content: data)
     myModal.open()
 
     id = $(this).data('id')

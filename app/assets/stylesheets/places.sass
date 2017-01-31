@@ -1,32 +1,52 @@
 .place.new
-  height: 100%
+  overflow: hidden
 
   .new_place
+    height: 500px
+    background: url('main_back.jpg')
+
+  .t1
+    float: left
+    width: 700px
+    padding: 10px
+    height: 500px
+    position: relative
+
+  .t2
+    .info
+      color: #d2d2d2
+      font-family: Verdana
+      font-style: italic
+      font-size: 11px
+
+    .js-image_upload_button, .mini_colors_wrapper, .actions > *
+      margin: 0 0 4px 0
+
     height: 100%
+    float: right
+    background: rgba(255,255,255,0.1)
+    padding: 5px
+    width: 183px
 
-  table
-    margin: 0px auto
-    height: 100%
+    .form-control, .btn
+      border-radius: 3px
 
-    .t1
-      padding: 10px
-      button
-        margin-top: 10px
-
-    .t2
-      vertical-align: top
-      background: brown
-      border-radius: 0 4px 4px 0
-      padding: 5px
-      width: 20%
-      .btn-success
-        width: 100%
-
-      .form-control, .btn
-        border-radius: 0
+    .btn-form-main
+      color: white
+      background: #3f9834
+      font-size: 20px
+      font-weight: bold
+      width: 100%
+      border-radius: 5px
+      width: 100%
+      position: absolute
+      bottom: 0
 
   .mini_previews
     margin-top: 5px
+    padding: 5px 45px 0 5px
+    border-radius: 2px
+    background: rgba(255,255,255,0.1)
     img
       vertical-align: top
     .svg_preview_wrapper
@@ -35,6 +55,8 @@
       position: absolute
 
   .actions
+    position: relative
+    height: 296px
     input
       margin: 5px 0
 
@@ -43,24 +65,36 @@
 
   .js-image_wrapper
     position: relative
+    display: inline-block
+    box-shadow: 2px 2px 6px black
 
     .filterPlace
       position: absolute
       top: 0
       left: 0
 
-    img
-      width: 100%
-
+    .js-image_preview
+      max-width: 690px
+      max-height: 490px
+      background-color: rgba(255,255,255,0.1)
 
   .mini_colors_wrapper
     .minicolors-panel
       border: none
 
+.centering
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+.jcrop-keymgr
+  visibility: hidden
+
 .place.show
   height: 100%
   .main_table
-    width: 270px
+    width: 100%
     height: 100%
     .sub_table
       text-align: center
@@ -78,4 +112,5 @@
       text-align: center
       &:hover
         background: #f8f8f9
+        border-radius: 5px
 
