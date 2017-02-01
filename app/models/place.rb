@@ -42,18 +42,13 @@ class Place < ActiveRecord::Base
               <image filter='url(#fp1)' height='100%' width='100%' xlink:href='#{image.path}'></image>
             </svg>"
 
-      file = File.new('svg_temp.svg', 'w')
-      File.write(file, svg_string)
-      tfile = File.new(File.basename(image.path, ".*") + '.png', 'w')
+      img = Magick::Image.from_blob(svg_string) do
+        self.format = 'SVG'
+        self.background_color = 'transparent'
+      end
 
-      system("inkscape -z -e '#{tfile.path}' '#{file.path}'")
-      self.image = tfile
-      self.save
-
-      tfile.close
-      file.close
-      File.delete(file)
-      File.delete(tfile)
+      img[0].to_blob { self.format = 'jpg' }
+      img[0].write image.path
     end
   end
 
