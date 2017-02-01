@@ -44,8 +44,7 @@ class Place < ActiveRecord::Base
         self.background_color = 'transparent'
       end
       file = File.new('place.jpg', 'w+')
-      img[0].to_blob { self.format = 'jpg' }
-      img[0].write file.path
+      img[0].write file.path {self.format = 'jpg'}
       update_attribute(:image, file)
       file.close
       File.delete(file)

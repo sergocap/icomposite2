@@ -1,0 +1,7 @@
+[alias]
+hist = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[user]
+	email = systemofadown.2013@yandex.ru
+	name = sergocap
+[push]
+	default = matching
