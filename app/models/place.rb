@@ -43,15 +43,9 @@ class Place < ActiveRecord::Base
         self.format = 'SVG'
         self.background_color = 'transparent'
       end
-
       img[0].to_blob { self.format = 'jpg' }
-      file = File.new('place.jpg', 'w+')
-      file_path = file.path
-      img[0].write file_path
-      file.close
-      update_attribute(:image, file = File.open(file_path))
-      file.close
-      File.delete(file)
+      img[0].write image.path
+      image.reprocess!
     end
   end
 
