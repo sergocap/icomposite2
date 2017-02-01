@@ -9,9 +9,6 @@ class Place < ActiveRecord::Base
     :r_component, :g_component, :b_component,
     :pre_height, :pre_width
 
-  extend Enumerize
-  enumerize :state, in: [:new, :crop_edit, :color_edit, :draft, :published], :default => :new
-
   def process_image
     img = Magick::Image.read(image.path)[0]
     img.resize!(pre_width.to_f, pre_height.to_f, Magick::LanczosFilter, 1.0)
@@ -46,9 +43,11 @@ class Place < ActiveRecord::Base
         self.format = 'SVG'
         self.background_color = 'transparent'
       end
-
       img[0].to_blob { self.format = 'jpg' }
-      img[0].write image.path
+      tfile = Tempfile.new(Time.now.strftime('%Y%m%d') + '.jpg')
+      img[0].write tfile.path
+      update_attribute(:image, tfile)
+      tfile.close true
     end
   end
 
