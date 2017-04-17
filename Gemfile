@@ -20,6 +20,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'unicorn'
 
 group :development do
   gem 'capistrano', '~> 3.6'
@@ -34,7 +35,6 @@ end
 group :production do
   gem 'rails_12factor', group: :production
   gem 'pg'
-  gem 'unicorn'
 end
 
 ruby '2.3.0'
