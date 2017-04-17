@@ -20,9 +20,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'capistrano'
 
 group :development do
+  gem 'capistrano'
   gem 'sqlite3'
   gem 'awesome_print'
   gem 'web-console', '~> 2.0'
