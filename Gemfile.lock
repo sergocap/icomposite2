@@ -57,6 +57,15 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    capistrano-bundler (1.2.0)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-rails (1.2.3)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -248,7 +257,9 @@ DEPENDENCIES
   awesome_print
   bootstrap-sass
   cancan
-  capistrano
+  capistrano (~> 3.6)
+  capistrano-rails (~> 1.1)
+  capistrano-rvm
   coffee-rails (~> 4.1.0)
   devise
   enumerize
@@ -277,4 +288,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.12.5
+   1.14.6

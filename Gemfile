@@ -22,7 +22,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
-  gem 'capistrano'
+  gem 'capistrano', '~> 3.6'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rvm'
   gem 'sqlite3'
   gem 'awesome_print'
   gem 'web-console', '~> 2.0'

@@ -18,4 +18,5 @@
 
 public/system/**
 public/assets/**
-
+config/secrets.yml
+config/database.yml

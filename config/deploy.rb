@@ -1,32 +1,12 @@
-# config valid only for current version of Capistrano
-lock "3.8.0"
+lock '3.8.0'
 
-set :application, "icomposite"
-# Вызов функции set создаст переменную application и присвоит ей значение "myproject"
+set :application, 'icomposite'
+set :repo_url, 'git@github.com:sergocap/icomposite2.git'
+set :branch, 'master'
+set :deploy_to, '/home/sergocap/icomposite'
 
-# В проекте мы используем только один сервер, выполняющий роль веб-сервиса.
-role :web, "s2e24de6c.fastvps-server.com"
-set :user, 'sergocap'
-set :use_sudo, false
-
-# Директория приложения на удалённом хостинге
-set :app_dir, "/home/#{user}/#{application}/"
-
-# Директория, куда будет делаться checkout из репозитория
-set :deploy_to, "#{app_dir}/deploy" # /home/myuser/myproject/deploy
-
-# Настройки репозитория
-set :scm, :git
-set :scm_user, 'sergocap'
-set :scm_url, "https://github.com/sergocap/icomposite2"
-set :repository, Proc.new { "--username #{scm_user} #{scm_url}"}
-
-task :after_symlink, :roles => :web do
-run "ln -nfs #{release_path}/public #{app_dir}/public_html"
-end
-
-#set :application, "my_app_name"
-#set :repo_url, "git@example.com:me/my_repo.git"
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
