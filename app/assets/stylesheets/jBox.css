@@ -21,7 +21,7 @@
 }
 
 .jBox-container {
-	background: #fff;
+	/*background: #fff;*/
 }
 
 .jBox-content {
@@ -120,8 +120,8 @@
 
 .jBox-Modal .jBox-container,
 .jBox-Confirm .jBox-container {
-	border-radius: 5px;
-	box-shadow: 0 3px 15px rgba(0, 0, 0, .4), 0 0 5px rgba(0, 0, 0, .4);
+	/*border-radius: 5px;*/
+	/*box-shadow: 0 3px 15px rgba(0, 0, 0, .4), 0 0 5px rgba(0, 0, 0, .4);*/
 }
 
 .jBox-Modal .jBox-title,

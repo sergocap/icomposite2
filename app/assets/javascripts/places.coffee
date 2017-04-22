@@ -3,8 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 @init_ajax_place_new = ->
   $('.ajax-place_new').on 'ajax:success', (e, data) ->
-    myModal = new jBox('Modal', width: '900px', height: '500px', onClose: destroy_jBox, content: data)
+    myModal = new jBox('Modal', width: '1100px', height: '500px', onClose: destroy_jBox, content: data)
     myModal.open()
+    #console.log $('.jBox-wrapper.jBox-Modal.jBox-Default')
 
     init_mini_color()
 
