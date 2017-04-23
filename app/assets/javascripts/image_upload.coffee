@@ -71,21 +71,24 @@ init_svg = (preview) ->
   svg_handler.attr('width', $('#place_pre_width').val())
   svg_image = $('.svg_place_image')
   $(svg_image).attr('xlink:href', preview.attr('src'))
-  set_rgb hexToRgb("333333")
+  set_rgb hexToRgb("#ffffff")
+  $('#place_hex_component').attr('value', '#ffffff')
 
 @init_mini_color = ->
   $('.mini_colors_input').minicolors
     inline: true
     change: (hex) ->
       set_rgb hexToRgb(hex)
+      $('#place_hex_component').attr('value', hex)
 
 set_rgb = (rgb) ->
-  $('.filter_r').attr('slope', rgb.r*5/255)
-  $('.filter_g').attr('slope', rgb.g*5/255)
-  $('.filter_b').attr('slope', rgb.b*5/255)
-  $('#place_r_component').attr('value', rgb.r*5/255)
-  $('#place_g_component').attr('value', rgb.g*5/255)
-  $('#place_b_component').attr('value', rgb.b*5/255)
+  r = rgb.r
+  g = rgb.g
+  b = rgb.b
+  $('.rectColored').attr('flood-color', "rgb(#{r},#{g},#{b})")
+  $('#place_r_component').attr('value', r)
+  $('#place_g_component').attr('value', g)
+  $('#place_b_component').attr('value', b)
 
 hexToRgb = (hex) ->
   result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)

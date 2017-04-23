@@ -14,9 +14,10 @@ class PlacesController < ApplicationController
   def create
     create! do |success, failure|
       success.html {
-        @place.update_attribute(:ic_id, @ic.id)
-        @place.update_attribute(:user_id, current_user.id) if user_signed_in?
+        @place.ic_id = @ic.id
+        @place.user_id = current_user.id if user_signed_in?
         @place.process_image
+        @place.save!
         @ic.add_to_project(@place)
         redirect_to ic_path(@ic.id)
       }
@@ -35,7 +36,7 @@ class PlacesController < ApplicationController
   def permitted_params
     params.permit(:place => [:x, :y, :image, :link, :comment,
                              :crop_x, :crop_y, :crop_width, :crop_height,
-                             :saturate, :r_component, :g_component, :b_component,
+                             :saturate, :hex_component, :r_component, :g_component, :b_component,
                              :pre_height, :pre_width])
   end
 end

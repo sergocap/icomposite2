@@ -6,7 +6,7 @@ class Place < ActiveRecord::Base
   validates_attachment_content_type :image,
     :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   attr_accessor :crop_x, :crop_y, :crop_height, :crop_width,
-    :r_component, :g_component, :b_component,
+    :hex_component, :r_component, :g_component, :b_component,
     :pre_height, :pre_width
 
   def process_image
@@ -19,36 +19,14 @@ class Place < ActiveRecord::Base
       target_height = crop_height.to_f / resize_f
       img.resize!(target_width, target_height, Magick::LanczosFilter, 1.0)
     end
+    img = svg_save(img)
     img.write(image.path)
-    svg_save
   end
 
-  def svg_save
-    unless r_component == '1' && g_component == '1' && b_component == '1'
-      svg_string = "
-            <svg height='#{height}' width='#{width}'>
-              <defs>
-                <filter id='fp1'>
-                  <feComponentTransfer>
-                    <feFuncR slope='#{r_component}' type='linear'></feFuncR>
-                    <feFuncG slope='#{g_component}' type='linear'></feFuncG>
-                    <feFuncB slope='#{b_component}' type='linear'></feFuncB>
-                  </feComponentTransfer>
-                </filter>
-              </defs>
-              <image filter='url(#fp1)' height='100%' width='100%' xlink:href='#{image.path}'></image>
-            </svg>"
-
-      img = Magick::Image.from_blob(svg_string) do
-        self.format = 'SVG'
-        self.background_color = 'transparent'
-      end
-      file = File.new('place.jpg', 'w+')
-      img[0].write file.path {self.format = 'jpg'}
-      update_attribute(:image, file)
-      file.close
-      File.delete(file)
-    end
+  def svg_save(img)
+    color_str = "rgb(#{r_component},#{g_component},#{b_component})"
+    rect = Magick::Image.new(img.columns, img.rows) { self.background_color = color_str }
+    img.composite(rect, 0, 0, Magick::MultiplyCompositeOp)
   end
 
   def width

@@ -4,11 +4,9 @@
     %svg{ class: 'filterPlaceSmall', :width => @ic.place_width, :height => @ic.place_height }
       %defs
         %filter{ id: 'fp1' }
-          %feComponentTransfer
-            %feFuncR{ class: 'filter_r', type: 'linear', slope: '1' }
-            %feFuncG{ class: 'filter_g', type: 'linear', slope: '1' }
-            %feFuncB{ class: 'filter_b', type: 'linear', slope: '1' }
-            %feFuncA{ type: 'identity' }
+          %feFlood{ class: 'rectColored', result: 'floodFill', x: 0, y: 0, width: '100%', height: '100%',
+            'flood-color': "rgb(255,255,255)", 'flood-opacity': 1 }
+          %feBlend{ in: 'SourceGraphic', in2: 'floodFill', mode: 'multiply' }
 
       %image{ :height => '100%', :width => '100%', 'xlink:href' => '', class: 'svg_place_image small', filter: 'url(#fp1)' }
 
